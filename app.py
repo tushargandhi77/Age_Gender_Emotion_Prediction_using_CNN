@@ -8,7 +8,7 @@ from keras.models import load_model
 app = Flask(__name__)
 
 # Load models
-mymodel = load_model('./models/AgeGenderModel.h5')
+mymodel = load_model('./models/AGNew.h5')
 Emotion_model = load_model("./models/mymodel.h5")
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
@@ -18,7 +18,6 @@ emotion_labels = ["Anger", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surpri
 # Define a function to process the uploaded image
 import base64
 
-# Define a function to process the uploaded image
 # Define a function to process the uploaded image
 def process_image(img):
     # Convert image to grayscale
@@ -30,7 +29,7 @@ def process_image(img):
         # Extract face region
         face_img = img[y:y+h, x:x+w]
         # Resize face image for age and gender model
-        face_resized = cv2.resize(face_img, (150, 150))
+        face_resized = cv2.resize(face_img, (200, 200))
         normalized_face = face_resized / 255.0
         normalized_face = np.expand_dims(normalized_face, axis=0)
         # Resize face image for emotion model
@@ -38,7 +37,7 @@ def process_image(img):
         normalized_face1 = face_resized1 / 255.0
         normalized_face1 = np.expand_dims(normalized_face1, axis=0)
         # Predict age and gender
-        pred_age = mymodel.predict(normalized_face)[0][0][0]
+        pred_age = int(mymodel.predict(normalized_face)[0][0][0])
         pred_gender = mymodel.predict(normalized_face)[1][0][0]
         # Predict emotion
         pred_emotion = Emotion_model.predict(normalized_face1)[0]
