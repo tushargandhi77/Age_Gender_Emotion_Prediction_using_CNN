@@ -14,7 +14,6 @@ class DL_model:
         self.emotion_folder = emotion_folder
 
     def  load_data(self,gender_batch:int,emotion_batch:int):
-# Load age-gender data
         D1 = self.Age_gender_folder
 
         age = []
@@ -114,7 +113,7 @@ class DL_model:
             model.add(Dropout(0.2))
             model.add(Dense(128,activation='relu'))
             model.add(Dropout(0.2))
-            model.add(Dense(5,activation='softmax'))
+            model.add(Dense(7,activation='softmax'))
 
         else:
 
@@ -150,7 +149,7 @@ class DL_model:
             model.add(BatchNormalization())
             model.add(Dropout(0.2))
 
-            model.add(Dense(5,activation='softmax'))
+            model.add(Dense(7,activation='softmax'))
 
         return model
     
@@ -169,7 +168,7 @@ class DL_model:
         print("================== EMOTION MODEL =====================")
         M2 = self.model_emotion(modal=modal)
         M2.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
-        M2.fit(D2,epochs=100,steps_per_epoch=50)
+        M2.fit(D2,epochs=100)
 
         
         M2.save('EmotionModel.h5')
