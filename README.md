@@ -19,12 +19,12 @@ Privacy and Security: The system prioritizes user privacy and data security, imp
 
 ## How to use 
 
-In  terminal
-python install -r requirements.txt
-python __init__.py
-"Two models are ready. Make a folder named 'models' and add them there."
-python app.py
-"Flask server activated at local host 5000"
+### In  terminal
+### python install -r requirements.txt
+### python __init__.py
+#### "Two models are ready. Make a folder named 'models' and add them there."
+### python app.py
+#### "Flask server activated at local host 5000"
 
 ## Screenshots
 
