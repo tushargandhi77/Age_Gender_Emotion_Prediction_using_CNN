@@ -75,7 +75,7 @@
     </div>
     {% for prediction in predictions %}
     <div class="prediction">
-        <p>{{ loop.index }}: Age: {{ prediction.age }}, Gender: {{ "Female" if prediction.gender > 0.5 else "Male" }},
+        <p>{{ loop.index }}: Age: {{ prediction.age }} , Gender: {{ "Female" if prediction.gender > 0.5 else "Male" }},
             Emotion: {{ prediction.emotion }}</p>
     </div>
     {% endfor %}
