@@ -7,6 +7,7 @@ from keras.models import load_model
 # Load models
 mymodel = load_model('./models/AGNew.h5')
 Emotion_model = load_model("./models/mymodel.h5")
+Age_model = load_model("./models/AGNew.h5")
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Define emotion labels
@@ -31,7 +32,8 @@ def process_image(img):
         normalized_face1 = face_resized1 / 255.0
         normalized_face1 = np.expand_dims(normalized_face1, axis=0)
         # Predict age and gender
-        pred_age = int(mymodel.predict(normalized_face)[0][0][0])
+        # pred_age = int(mymodel.predict(normalized_face)[0][0][0])
+        pred_age = int(Age_model.predict(normalized_face)[0])
         pred_gender = mymodel.predict(normalized_face)[1][0][0]
         # Predict emotion
         pred_emotion = Emotion_model.predict(normalized_face1)[0]
@@ -81,7 +83,7 @@ def main():
         # Display predictions
         for i, prediction in enumerate(predictions, start=1):
             st.subheader(f"Prediction {i}:")
-            st.write(f"Age: {prediction['age']}")
+            st.write(f"Age: ({prediction['age']-8}-{prediction['age']+8})")
             st.write(f"Gender: {'Female' if prediction['gender'] > 0.5 else 'Male'}")
             st.write(f"Emotion: {prediction['emotion']}")
 
