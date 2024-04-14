@@ -17,6 +17,15 @@ User-Friendly Interface: The web-based platform features an intuitive and user-f
 Scalability and Performance: Leveraging Flask server architecture, the system ensures scalability and high performance, accommodating a large number of concurrent users and image processing requests.
 Privacy and Security: The system prioritizes user privacy and data security, implementing robust measures to safeguard sensitive information and ensure compliance with privacy regulations.
 
+## Usage
+To run the app locally, follow these steps:
+1. Clone this repository to your local machine.
+2. Install the required dependencies using `pip install -r requirements.txt`.
+3. Navigate to the directory containing the app files.
+4. Run the Streamlit app using the command `streamlit run app.py`.
+5. Access the app in your web browser at the provided URL.
+
+
 ## How to use 
 
 ### In  terminal
